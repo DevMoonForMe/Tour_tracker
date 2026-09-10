@@ -3,6 +3,7 @@ import { useTripStore } from '../store/useTripStore';
 import type { Contribution } from '../types';
 import { formatCurrency } from '../utils/calculations';
 import { PiggyBank, CreditCard, Banknote, Landmark, Smartphone, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Advances() {
   const { activeTripId, members, contributions, addContribution, deleteContribution } = useTripStore();
@@ -77,7 +78,7 @@ export function Advances() {
         <PiggyBank className="w-12 h-12 text-slate-300 mx-auto mb-3" />
         <h3 className="text-lg font-medium text-slate-900">No active trip</h3>
         <p className="text-slate-500 mt-1">Please select or create a trip first.</p>
-        <a href="/trips" className="mt-4 inline-block px-4 py-2 bg-primary-600 text-white rounded-lg">Go to Trips</a>
+        <Link to="/trips" className="mt-4 inline-block px-4 py-2 bg-primary-600 text-white rounded-lg">Go to Trips</Link>
       </div>
     );
   }
@@ -86,7 +87,7 @@ export function Advances() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-slate-900">Advances</h1>
-        <button 
+        <button
           onClick={() => setShowForm(!showForm)}
           className="px-4 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
         >
@@ -98,16 +99,16 @@ export function Advances() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-primary-50 p-4 rounded-xl border border-primary-100 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-2">
-               <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
-                 <PiggyBank className="w-5 h-5" />
-               </div>
-               <div>
-                 <p className="text-sm font-medium text-primary-800">Total Advances</p>
-                 <p className="text-2xl font-bold text-primary-900">{formatCurrency(totalAdvances)}</p>
-               </div>
+              <div className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
+                <PiggyBank className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-primary-800">Total Advances</p>
+                <p className="text-2xl font-bold text-primary-900">{formatCurrency(totalAdvances)}</p>
+              </div>
             </div>
           </div>
-          
+
           <div className="bg-white p-4 rounded-xl border border-slate-200">
             <h3 className="text-sm font-medium text-slate-800 mb-3">Advance by Member</h3>
             <div className="space-y-2">
@@ -129,10 +130,10 @@ export function Advances() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className="text-sm font-medium text-slate-700">Member *</label>
-                <select 
+                <select
                   required
                   value={formData.memberId}
-                  onChange={(e) => setFormData({...formData, memberId: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, memberId: e.target.value })}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
                 >
                   <option value="">Select Member</option>
@@ -145,13 +146,13 @@ export function Advances() {
                 <label className="text-sm font-medium text-slate-700">Amount *</label>
                 <div className="relative">
                   <span className="absolute left-3 top-2 text-slate-500">₹</span>
-                  <input 
-                    type="number" 
+                  <input
+                    type="number"
                     required
                     min="1"
                     step="0.01"
                     value={formData.amount}
-                    onChange={(e) => setFormData({...formData, amount: e.target.value})}
+                    onChange={(e) => setFormData({ ...formData, amount: e.target.value })}
                     className="w-full pl-8 pr-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
                     placeholder="0.00"
                   />
@@ -159,20 +160,20 @@ export function Advances() {
               </div>
               <div className="space-y-1">
                 <label className="text-sm font-medium text-slate-700">Date *</label>
-                <input 
-                  type="date" 
+                <input
+                  type="date"
                   required
                   value={formData.date}
-                  onChange={(e) => setFormData({...formData, date: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
                 />
               </div>
               <div className="space-y-1">
                 <label className="text-sm font-medium text-slate-700">Payment Method *</label>
-                <select 
+                <select
                   required
                   value={formData.paymentMethod}
-                  onChange={(e) => setFormData({...formData, paymentMethod: e.target.value as Contribution['paymentMethod']})}
+                  onChange={(e) => setFormData({ ...formData, paymentMethod: e.target.value as Contribution['paymentMethod'] })}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none bg-white"
                 >
                   <option value="UPI">UPI</option>
@@ -184,10 +185,10 @@ export function Advances() {
               </div>
               <div className="space-y-1 md:col-span-2">
                 <label className="text-sm font-medium text-slate-700">Notes (Optional)</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={formData.notes}
-                  onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 outline-none"
                   placeholder="e.g. Flight ticket advance"
                 />
@@ -240,7 +241,7 @@ export function Advances() {
                       <span className="font-bold text-lg text-slate-900">
                         {formatCurrency(contribution.amount)}
                       </span>
-                      <button 
+                      <button
                         onClick={() => handleDelete(contribution.id)}
                         className="text-slate-400 hover:text-red-500 p-1"
                         title="Delete"

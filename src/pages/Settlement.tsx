@@ -3,6 +3,7 @@ import { useTripStore } from '../store/useTripStore';
 import { calculateBalances, calculateSettlements, formatCurrency } from '../utils/calculations';
 import { HandCoins, ArrowRight, CheckCircle2, FileText } from 'lucide-react';
 import { MemberDetailsModal } from '../components/MemberDetailsModal';
+import { Link } from 'react-router-dom';
 
 export function Settlement() {
   const { activeTripId, members, expenses, contributions } = useTripStore();
@@ -26,7 +27,7 @@ export function Settlement() {
         <HandCoins className="w-12 h-12 text-slate-300 mx-auto mb-3" />
         <h3 className="text-lg font-medium text-slate-900">No active trip</h3>
         <p className="text-slate-500 mt-1">Please select or create a trip first.</p>
-        <a href="/trips" className="mt-4 inline-block px-4 py-2 bg-primary-600 text-white rounded-lg">Go to Trips</a>
+        <Link to="/trips" className="mt-4 inline-block px-4 py-2 bg-primary-600 text-white rounded-lg">Go to Trips</Link>
       </div>
     );
   }
@@ -96,21 +97,20 @@ export function Settlement() {
                 {balances.map(b => {
                   const member = tripMembers.find(m => m.id === b.memberId);
                   if (!member) return null;
-                  
+
                   return (
                     <tr key={b.memberId} className="hover:bg-slate-50/50">
                       <td className="p-4 font-medium text-slate-900">{member.name}</td>
                       <td className="p-4 text-right text-slate-600 hidden sm:table-cell">{formatCurrency(b.totalPaid)}</td>
                       <td className="p-4 text-right text-slate-600 hidden sm:table-cell">{formatCurrency(b.totalContributed)}</td>
                       <td className="p-4 text-right text-slate-600 hidden sm:table-cell">{formatCurrency(b.totalShare)}</td>
-                      <td className={`p-4 text-right font-bold ${
-                        b.netBalance > 0.01 ? 'text-emerald-600' : 
-                        b.netBalance < -0.01 ? 'text-red-600' : 'text-slate-400'
-                      }`}>
+                      <td className={`p-4 text-right font-bold ${b.netBalance > 0.01 ? 'text-emerald-600' :
+                          b.netBalance < -0.01 ? 'text-red-600' : 'text-slate-400'
+                        }`}>
                         {b.netBalance > 0.01 ? '+' : ''}{formatCurrency(b.netBalance)}
                       </td>
                       <td className="p-4 text-center">
-                        <button 
+                        <button
                           onClick={() => setSelectedMemberId(b.memberId)}
                           className="inline-flex items-center gap-1 px-3 py-1.5 bg-primary-50 text-primary-700 hover:bg-primary-100 rounded-lg text-sm font-medium transition-colors"
                         >

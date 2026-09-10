@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { Trip, Member, Contribution, Expense } from '../types';
 
+//const API_URL = 'http://localhost:3001';
 const API_URL = 'https://tour-expenses-tracker.vercel.app';
 
 interface TripState {

@@ -1,27 +1,12 @@
 [
   {
-    "id": "trip-001",
-    "name": "Goa Trip 2026",
-    "budget": 50000
-  },
-  {
-    "id": "05290a15-2ef9-46ce-a4c6-7e1f1a983672",
-    "name": "Possimus optio qui",
-    "destination": "Enim eum nihil eum f",
-    "startDate": "1974-04-25",
-    "endDate": "1989-05-03",
-    "budget": 52,
-    "notes": "Laborum Commodi qui",
-    "createdAt": 1789036863512
-  },
-  {
-    "id": "2edee0a3-7d0d-4c41-b4f1-8f5ad94b4c11",
-    "name": "Magnam in culpa volu",
-    "destination": "Occaecat earum itaqu",
-    "startDate": "2017-03-03",
-    "endDate": "1974-02-06",
-    "budget": 91,
-    "notes": "Aspernatur proident",
-    "createdAt": 1789037791982
+    "id": "c3321e8c-1e74-45f9-99c7-690cb72e16b5",
+    "name": "valparai",
+    "destination": "",
+    "startDate": "2026-09-10",
+    "endDate": "2026-09-12",
+    "budget": 23000,
+    "notes": "",
+    "createdAt": 1789041711189
   }
 ]
