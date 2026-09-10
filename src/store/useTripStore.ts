@@ -59,7 +59,9 @@ export const useTripStore = create<TripState>()((set, get) => ({
       let activeId = localStorage.getItem('activeTripId');
       if (!activeId && settings.activeTripId) {
         activeId = settings.activeTripId;
-        localStorage.setItem('activeTripId', activeId);
+        if (activeId) {
+          localStorage.setItem('activeTripId', activeId);
+        }
       }
 
       set({ trips, members, contributions, expenses, activeTripId: activeId });
@@ -166,7 +168,7 @@ export const useTripStore = create<TripState>()((set, get) => ({
     } catch (e) { console.error(e); }
   },
   
-  importData: (jsonData: string) => {
+  importData: (_jsonData: string) => {
     return false;
   },
   exportData: () => {

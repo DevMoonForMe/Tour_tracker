@@ -23,7 +23,7 @@ const readData = (resource) => {
   }
   try {
     return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  } catch(e) {
+  } catch {
     if (resource === 'settings') return {};
     return [];
   }

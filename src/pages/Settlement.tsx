@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useTripStore } from '../store/useTripStore';
 import { calculateBalances, calculateSettlements, formatCurrency } from '../utils/calculations';
-import { HandCoins, ArrowRight, CheckCircle2, FileText, X } from 'lucide-react';
+import { HandCoins, ArrowRight, CheckCircle2, FileText } from 'lucide-react';
 import { MemberDetailsModal } from '../components/MemberDetailsModal';
 
 export function Settlement() {
