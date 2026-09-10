@@ -3,5 +3,15 @@
     "id": "trip-001",
     "name": "Goa Trip 2026",
     "budget": 50000
+  },
+  {
+    "id": "05290a15-2ef9-46ce-a4c6-7e1f1a983672",
+    "name": "Possimus optio qui",
+    "destination": "Enim eum nihil eum f",
+    "startDate": "1974-04-25",
+    "endDate": "1989-05-03",
+    "budget": 52,
+    "notes": "Laborum Commodi qui",
+    "createdAt": 1789036863512
   }
 ]
