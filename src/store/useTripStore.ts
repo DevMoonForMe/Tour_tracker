@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import type { Trip, Member, Contribution, Expense } from '../types';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'https://tour-expenses-tracker.vercel.app';
 
 interface TripState {
   activeTripId: string | null;
@@ -9,27 +9,27 @@ interface TripState {
   members: Member[];
   contributions: Contribution[];
   expenses: Expense[];
-  
+
   // Actions
   fetchData: () => Promise<void>;
   setActiveTrip: (tripId: string | null) => void;
-  
+
   addTrip: (trip: Trip) => Promise<void>;
   updateTrip: (trip: Trip) => Promise<void>;
   deleteTrip: (id: string) => Promise<void>;
-  
+
   addMember: (member: Member) => Promise<void>;
   updateMember: (member: Member) => Promise<void>;
   deleteMember: (id: string) => Promise<void>;
-  
+
   addContribution: (contribution: Contribution) => Promise<void>;
   updateContribution: (contribution: Contribution) => Promise<void>;
   deleteContribution: (id: string) => Promise<void>;
-  
+
   addExpense: (expense: Expense) => Promise<void>;
   updateExpense: (expense: Expense) => Promise<void>;
   deleteExpense: (id: string) => Promise<void>;
-  
+
   importData: (data: string) => boolean;
   exportData: () => string;
 }
@@ -40,7 +40,7 @@ export const useTripStore = create<TripState>()((set, get) => ({
   members: [],
   contributions: [],
   expenses: [],
-  
+
   fetchData: async () => {
     try {
       const [tripsRes, membersRes, contributionsRes, expensesRes, settingsRes] = await Promise.all([
@@ -78,7 +78,7 @@ export const useTripStore = create<TripState>()((set, get) => ({
     }
     set({ activeTripId: tripId });
   },
-  
+
   addTrip: async (trip) => {
     try {
       await fetch(`${API_URL}/trips`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(trip) });
@@ -103,14 +103,14 @@ export const useTripStore = create<TripState>()((set, get) => ({
       set((state) => {
         const newActiveId = state.activeTripId === id ? null : state.activeTripId;
         if (!newActiveId) localStorage.removeItem('activeTripId');
-        return { 
+        return {
           trips: state.trips.filter(t => t.id !== id),
           activeTripId: newActiveId,
         }
       });
     } catch (e) { console.error(e); }
   },
-  
+
   addMember: async (member) => {
     try {
       await fetch(`${API_URL}/members`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(member) });
@@ -129,7 +129,7 @@ export const useTripStore = create<TripState>()((set, get) => ({
       set((state) => ({ members: state.members.filter(m => m.id !== id) }));
     } catch (e) { console.error(e); }
   },
-  
+
   addContribution: async (contribution) => {
     try {
       await fetch(`${API_URL}/contributions`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(contribution) });
@@ -148,7 +148,7 @@ export const useTripStore = create<TripState>()((set, get) => ({
       set((state) => ({ contributions: state.contributions.filter(c => c.id !== id) }));
     } catch (e) { console.error(e); }
   },
-  
+
   addExpense: async (expense) => {
     try {
       await fetch(`${API_URL}/expenses`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(expense) });
@@ -167,7 +167,7 @@ export const useTripStore = create<TripState>()((set, get) => ({
       set((state) => ({ expenses: state.expenses.filter(e => e.id !== id) }));
     } catch (e) { console.error(e); }
   },
-  
+
   importData: (_jsonData: string) => {
     return false;
   },
