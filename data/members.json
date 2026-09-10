@@ -1,0 +1,17 @@
+[
+  {
+    "id": "mem-001",
+    "tripId": "trip-001",
+    "name": "Sanjai"
+  },
+  {
+    "id": "mem-002",
+    "tripId": "trip-001",
+    "name": "John"
+  },
+  {
+    "id": "mem-003",
+    "tripId": "trip-001",
+    "name": "Doe"
+  }
+]
