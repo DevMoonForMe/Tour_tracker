@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Map, Users, ReceiptText, HandCoins, Settings as SettingsIcon, PiggyBank } from 'lucide-react';
@@ -27,12 +29,12 @@ export function Sidebar() {
       </div>
       <nav className="flex-1 px-4 space-y-1">
         {navItems.map((item) => {
-          const isActive = location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path));
+          const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
           const Icon = item.icon;
           return (
             <Link
               key={item.name}
-              to={item.path}
+              href={item.path}
               className={twMerge(
                 clsx(
                   'flex items-center gap-3 px-3 py-3 rounded-lg font-medium transition-colors',

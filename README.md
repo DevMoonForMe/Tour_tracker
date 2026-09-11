@@ -1,32 +1,44 @@
-# React + TypeScript + Vite
+# Tour Split Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A full-stack Next.js application for tracking and splitting group tour expenses with a file-based JSON database and Next.js App Router API routes.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Trips Management**: Create, select, and manage multiple trips with dates and budgets.
+- **Member Management**: Track trip participants with contact information.
+- **Expense Tracking**: Log expenses across categories (Travel, Hotel, Food, Petrol, Shopping, etc.) with flexible split options (Equal, Custom, Percentage, Individual).
+- **Advance Payments**: Record initial contributions and pre-trip advances per member.
+- **Settlement & Debt Optimization**: Automatically calculate balances ("who owes whom") and generate detailed per-member final settlement breakdowns.
+- **JSON File Database**: Zero-configuration local database storing data in human-readable JSON files in the `/data` folder (`trips.json`, `members.json`, `contributions.json`, `expenses.json`, `settings.json`).
+- **Next.js API Routes**: Clean RESTful endpoints (`/api/[resource]`, `/api/[resource]/[id]`, `/api/import`) powering the frontend.
+- **Full Backup & Restore**: One-click export to JSON file and instant restore from JSON backup file.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: Next.js 16 (App Router)
+- **UI & Styling**: React 19, Tailwind CSS v4, Lucide React icons
+- **State Management**: Zustand
+- **Database**: Local JSON File Database (`/data/*.json`)
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Installation
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Running Locally
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build
+
+```bash
+npm run build
+npm run start
+```

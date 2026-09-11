@@ -1,3 +1,15 @@
+# Next.js
+.next/
+out/
+
+# Production
+build
+dist
+dist-ssr
+
+# Dependencies
+node_modules/
+
 # Logs
 logs
 *.log
@@ -7,10 +19,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Local env files
 *.local
+.env*.local
 
 # Editor directories and files
 .vscode/*

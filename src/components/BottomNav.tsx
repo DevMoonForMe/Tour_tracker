@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Map, ReceiptText, HandCoins, Users, PiggyBank } from 'lucide-react';
@@ -25,7 +27,7 @@ export function BottomNav() {
           return (
             <Link
               key={item.name}
-              to={item.path}
+              href={item.path}
               className={twMerge(
                 clsx(
                   'flex flex-col items-center justify-center w-full h-full space-y-1 transition-colors',
