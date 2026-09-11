@@ -1,12 +1,15 @@
-import type { ReactNode } from 'react';
+"use client";
+
+import { useEffect, type ReactNode } from 'react';
+import { useTripStore } from '../store/useTripStore';
 import { Sidebar } from '../components/Sidebar';
 import { BottomNav } from '../components/BottomNav';
 
-interface MainLayoutProps {
-  children: ReactNode;
-}
+export default function ClientAppWrapper({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    useTripStore.getState().fetchData();
+  }, []);
 
-export function MainLayout({ children }: MainLayoutProps) {
   return (
     <div className="flex h-screen bg-slate-50 overflow-hidden">
       <Sidebar />

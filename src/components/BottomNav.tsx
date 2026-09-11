@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Home, Map, ReceiptText, HandCoins, Users, PiggyBank } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -13,13 +14,13 @@ const navItems = [
 ];
 
 export function BottomNav() {
-  const location = useLocation();
+  const pathname = usePathname();
 
   return (
     <nav className="md:hidden fixed bottom-0 w-full bg-white border-t border-slate-200 z-50">
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
-          const isActive = location.pathname === item.path || (item.path !== '/' && location.pathname.startsWith(item.path));
+          const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
           const Icon = item.icon;
           return (
             <Link

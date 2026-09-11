@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Home, Map, Users, ReceiptText, HandCoins, Settings as SettingsIcon, PiggyBank } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -14,7 +15,7 @@ const navItems = [
 ];
 
 export function Sidebar() {
-  const location = useLocation();
+  const pathname = usePathname() || '/';
 
   return (
     <aside className="hidden md:flex flex-col w-64 h-screen bg-white border-r border-slate-200">
